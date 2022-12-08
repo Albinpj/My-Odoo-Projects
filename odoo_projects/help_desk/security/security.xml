@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record model="ir.module.category" id="help_desk">
+            <field name="name">Help Desk</field>
+            <field name="description">Access for Help Desk module
+            </field>
+            <field name="sequence">11</field>
+        </record>
+        <record id="help_desk_user_access" model="res.groups">
+            <field name="name">User</field>
+            <field name="category_id" ref="help_desk.help_desk"/>
+        </record>
+        <record id="help_desk_manager_access" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="help_desk.help_desk"/>
+            <field name="implied_ids" eval="[(4, ref('help_desk_user_access'))]"/>
+        </record>
+
+<!--        User can only see his tickets / Record Rule-->
+
+        <record id="tickets_user_visibility_user" model="ir.rule">
+            <field name="name">User can only see his / her tickets</field>
+            <field name="model_id" ref="model_help_desk_tickets"/>
+            <field name="groups" eval="[(4, ref ('help_desk_user_access'))]"/>
+            <field name="domain_force">[('user_id', '=', user.id)]</field>
+        </record>
+
+        <record id="tickets_manager_visibility_user" model="ir.rule">
+            <field name="name">Manager can see all tickets</field>
+            <field name="model_id" ref="model_help_desk_tickets"/>
+            <field name="groups" eval="[(4, ref ('help_desk_manager_access'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+        </record>
+    </data>
+</odoo>

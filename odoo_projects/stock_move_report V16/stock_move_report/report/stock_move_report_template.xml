@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <template id="report_stock_move">
+            <t t-call="web.external_layout">
+                <t t-call="web.html_container">
+                    <div class="text-center">
+                        <h1>Stock Move Report</h1>
+                    </div>
+                    <div>
+                        <t t-if="start_date">
+                            <strong>Start Date :</strong>
+                            <span t-esc="start_date"/>
+                        </t>
+                        <br/>
+                        <t t-if="end_date">
+                            <strong>End Date :</strong>
+                            <span t-esc="end_date"/>
+                        </t>
+                        <br/>
+                        <t t-if="product_id">
+
+                            <strong>Product Name :</strong>
+                            <span t-esc="product_id"/>
+                        </t>
+                        <br/>
+                        <t t-if="location_type">
+                            <strong>Location Type :</strong>
+                            <span t-esc="location_type"/>
+                        </t>
+                        <br/>
+                        <t t-if="status">
+                            <strong>Status :</strong>
+                            <span t-esc="status"/>
+                        </t>
+                        <br/>
+                    </div>
+                    <table class="table table-sm o_main_table">
+                        <thead>
+                            <tr>
+                                <th>Sl no</th>
+                                <th>Date</th>
+                                <th>Reference</th>
+                                <th>Product Name</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="j" t-value="0"/>
+                            <t t-foreach="query" t-as="o">
+                                <t t-set="j" t-value="j+1"/>
+                                <tr>
+                                    <td>
+                                        <t t-esc="j"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="o['date']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="o['reference']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="o['name']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="o['source_location']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="o['destination_location']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="o['state']"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

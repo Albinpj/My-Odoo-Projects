@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="stock_move_wizard_action" model="ir.actions.act_window">
+            <field name="name">Stock Move Wizard</field>
+            <field name="res_model">stock.move.wizard</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+        <menuitem id="stock_move_report"
+                  name="Stock Move Report"
+                  parent="stock.menu_warehouse_report"
+                  action="action_create_stock_move_report"
+                  sequence="300"/>
+    </data>
+</odoo>

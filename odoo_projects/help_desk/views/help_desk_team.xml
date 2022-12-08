@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_help_desk_team_tree" model="ir.ui.view">
+            <field name="name">Help Desk Team</field>
+            <field name="model">help.desk.team</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="help_desk_team"/>
+                    <field name="responsible_person"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_help_desk_team_form" model="ir.ui.view">
+            <field name="name">Help Desk Team</field>
+            <field name="model">help.desk.team</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="help_desk_team"/>
+                                <field name="responsible_person"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    g
+                </form>
+            </field>
+        </record>
+        <record id="view_help_desk_team_search" model="ir.ui.view">
+            <field name="name">Help Desk Team</field>
+            <field name="model">help.desk.team</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="help_desk_team"/>
+                    <field name="responsible_person"/>
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>

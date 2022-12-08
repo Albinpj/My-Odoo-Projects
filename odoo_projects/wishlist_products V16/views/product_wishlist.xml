@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="product_wishlist_form" model="ir.ui.view">
+            <field name="name">form.view</field>
+            <field name="model">product.wishlist</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="product_id"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="product_wishlist_tree" model="ir.ui.view">
+            <field name="name">tree.view</field>
+            <field name="model">product.wishlist</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="partner_id"/>
+                    <field name="product_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="product_wishlist_search" model="ir.ui.view">
+            <field name="name">search.view</field>
+            <field name="model">product.wishlist</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="product_id"/>
+                    <field name="partner_id"/>
+                    <group expand="1" string="Group By">
+                        <filter string="Customer" name="partner_id"
+                                context="{'group_by':'partner_id', 'residual_visible':True}"/>
+                        <filter string="Product" name="product_id"
+                                context="{'group_by':'product_id', 'residual_visible':True}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="action_product_wishlist" model="ir.actions.act_window">
+            <field name="name">Wishlist Product</field>
+            <field name="res_model">product.wishlist</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+        <menuitem id="product_wishlist_id"
+                  name="Wishlist Product"
+                  parent="website.menu_reporting"
+                  action="action_product_wishlist"
+                  sequence="300"/>
+    </data>
+</odoo>

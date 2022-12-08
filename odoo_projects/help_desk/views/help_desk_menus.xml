@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="help_desk_menu_configuration"
+                  name="Help Desk"
+                  sequence="1"/>
+        <menuitem id="help_desk_tickets_sub_configuration"
+                  name="Tickets"
+                  parent="help_desk_menu_configuration"
+                  action="test_model_action_tickets"
+                  sequence="2"/>
+        <record id="test_model_action_tickets" model="ir.actions.act_window">
+            <field name="name">Tickets</field>
+            <field name="res_model">help.desk.tickets</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+        <menuitem id="help_desk_sub_configuration"
+                  name="Tickets"
+                  parent="help_desk_tickets_sub_configuration"
+                  action="test_model_action_tickets"
+                  sequence="3"/>
+        <menuitem id="help_desk_settings_sub_configuration"
+                  name="Configuration"
+                  parent="help_desk_menu_configuration"
+                  action="test_model_action_tickets"
+                  sequence="3"/>
+
+        <record id="test_model_action_help_desk_team" model="ir.actions.act_window">
+            <field name="name">Helpdesk Team</field>
+            <field name="res_model">help.desk.team</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+        <menuitem id="help_desk_sub_configuration"
+                  name="Helpdesk Team"
+                  parent="help_desk_settings_sub_configuration"
+                  action="test_model_action_help_desk_team"
+                  sequence="4"/>
+    </data>
+</odoo>
